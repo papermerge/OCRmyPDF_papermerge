@@ -1,4 +1,4 @@
-def generate_preview(intput_file, options):
+def generate_preview(input_file, options):
     """
     Generates page preview as jpeg
     """

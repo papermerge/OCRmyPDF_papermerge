@@ -2,24 +2,11 @@ from ocrmypdf import hookimpl
 from ocrmypdf.builtin_plugins.tesseract_ocr import TesseractOcrEngine
 from ocrmypdf._exec import tesseract
 
-
-def generate_svg(input_file, input_hocr, options):
-    """
-    Generates page SVG with embedded raster image and text overlay.
-    """
-    print(
-        f"GENERATE_SVG: input_file: {input_file}, input_hocr: {input_hocr}"
-    )
+from .generate_preview import generate_preview
+from .generate_svg import generate_svg
 
 
-def generate_preview(intput_file, options):
-    """
-    Generates page preview as jpeg
-    """
-    pass
-
-
-class PapermergeCustomEngine(TesseractOcrEngine):
+class CustomEngine(TesseractOcrEngine):
 
     @staticmethod
     def generate_hocr(input_file, output_hocr, output_text, options):
@@ -48,7 +35,7 @@ class PapermergeCustomEngine(TesseractOcrEngine):
 
 @hookimpl
 def get_ocr_engine():
-    return PapermergeCustomEngine()
+    return CustomEngine()
 
 
 @hookimpl

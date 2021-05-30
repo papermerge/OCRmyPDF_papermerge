@@ -1,0 +1,21 @@
+build/
+.eggs/
+.tox/
+.venv
+*.pyc
+__pycache__
+*.swp
+*.swn
+*.swo
+*.log
+*.sublime-project
+*.map
+*.png~
+*.kra~
+dist
+# Sphinx documentation
+docs/build/
+_build
+_static
+_templates
+.vscode

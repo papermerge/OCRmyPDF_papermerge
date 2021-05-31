@@ -1,0 +1,3 @@
+jinja2 == 3.0.1
+ocrmypdf == 12.0.3
+lxml == 4.6.2

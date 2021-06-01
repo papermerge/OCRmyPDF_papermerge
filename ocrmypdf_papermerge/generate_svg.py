@@ -16,14 +16,18 @@ def generate_svg(input_file, input_hocr, options):
 
     words = get_words(input_hocr)
 
-    svg_file_path = f"{options.svg_output_folder}/{root}.svg"
-    svg_file_output = render_to_string(
-        "templates/page.svg.j2",
+    output_format = options.output_format  # svg | html
+    output_dir = options.output_dir
+    template_name = f"page.{output_format}.j2"  # svg | html
+
+    output_file_path = f"{output_dir}/{root}.{output_format}"
+    rendered_string = render_to_string(
+        template_name,
         base64_img=base64_img.decode('utf-8'),
         width=size[0],
         height=size[1],
         words=words
     )
 
-    with open(svg_file_path, 'wt') as f:
-        f.write(svg_file_output)
+    with open(output_file_path, 'wt') as f:
+        f.write(rendered_string)

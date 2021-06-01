@@ -23,6 +23,14 @@ class BBox:
         self.y1 = y1
         self.y2 = y2
 
+    @property
+    def width(self):
+        return self.x2 - self.x1
+
+    @property
+    def height(self):
+        return self.y2 - self.y1
+
     def __str__(self):
         x1 = self.x1
         x2 = self.x2
@@ -39,13 +47,39 @@ class Word:
         self.title = html_element.get('title')
         self.bbox = BBox.from_string(self.title)
 
+    @property
+    def x(self):
+        return self.bbox.x1
+
+    @property
+    def y(self):
+        return self.bbox.y1
+
+    @property
+    def width(self):
+        return self.bbox.width
+
+    @property
+    def height(self):
+        return self.bbox.height
+
+    def __str__(self):
+        _id = self.id
+        _text = self.text
+
+        return f"Word(id={_id}, text={_text})"
+
 
 def get_words(input_hocr):
-    result = []
+    html_elements = []
 
     with open(input_hocr, "rt") as f:
         hocr = f.read()
         doc = html.fromstring(hocr.encode())
-        result = doc.xpath("//*[@class='ocrx_word']")
+        html_elements = doc.xpath("//*[@class='ocrx_word']")
 
-    return result
+    words = [
+        Word(html_el) for html_el in html_elements
+    ]
+
+    return words

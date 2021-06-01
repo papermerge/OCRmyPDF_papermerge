@@ -1,20 +1,20 @@
 import os.path
-from jinja2 import Template
+from jinja2 import Environment, FileSystemLoader
 
 
 def render_to_string(template_name, **context):
     output = ""
     current_dir = os.path.dirname(
-        os.path.dirname(os.path.abspath(__file__))
+        os.path.abspath(__file__)
     )
-    template_path = os.path.join(
+    templates_dir = os.path.join(
         current_dir,
-        template_name
+        "templates"
     )
+    _loader = FileSystemLoader(templates_dir)
+    _env = Environment(loader=_loader)
 
-    with open(template_path, "rt") as f:
-        page_template_j2 = f.read()
-        template = Template(page_template_j2)
-        output = template.render(**context)
+    template = _env.get_template(template_name)
+    output = template.render(**context)
 
     return output

@@ -1,21 +1,22 @@
 <svg viewBox="0 0 {{width}} {{height}}" xmlns="http://www.w3.org/2000/svg">
-    <g>
-      <image
-        width="{{width}"
-        href="data:image/jpeg;base64,{{base64_img}}"
-        />
-    </g>
-    <g>
-        {% for word in words %}
-            <text
-                x="{{word.x}}"
-                y="{{word.y}}"
-                id="{{word.id}}"
-                title="bbox {{word.bbox}}; x_wconf 95"
-                fill="transparent"
-                opacity="0.4">
-                {{word.text}}
-            </text>
-        {% endfor %}
-    </g>
+
+    {% for word in words %}
+        <text
+            x="{{word.x}}"
+            y="{{word.y + word.height}}"
+            textLength="{{word.width}}"
+            font-size="{{word.height}}"
+            id="{{word.id}}"
+            title="bbox {{word.bbox}}"
+            fill="transparent"
+            opacity="0.4">
+            {{word.text}}
+        </text>
+    {% endfor %}
+
+  <image
+    width="{{width}}"
+    href="data:image/jpeg;base64,{{base64_img}}"
+    />
+
 </svg>

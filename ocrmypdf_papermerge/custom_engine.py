@@ -41,6 +41,12 @@ def get_ocr_engine():
 @hookimpl
 def add_options(parser):
     parser.add_argument(
-        '--svg-output-folder',
-        help="Folder where to write SVG generated files"
+        '--output-dir',
+        help="Folder where to write generated files"
+    )
+    parser.add_argument(
+        '--output-format',
+        help="Format of generated output",
+        choices=["html", "svg"],
+        default="svg"
     )

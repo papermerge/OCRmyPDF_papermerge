@@ -4,6 +4,10 @@ from ocrmypdf._exec import tesseract
 
 from .generate_preview import generate_preview
 from .generate_svg import generate_svg
+from .utils import (
+    copy_hocr,
+    copy_txt
+)
 
 
 class CustomEngine(TesseractOcrEngine):
@@ -22,14 +26,27 @@ class CustomEngine(TesseractOcrEngine):
             user_words=options.user_words,
             user_patterns=options.user_patterns,
         )
+        # jpeg thumbnail preview image
         generate_preview(
-            input_file=input_file,
+            input_file=str(input_file),
             options=options
         )
+        # svg | html with embedded raster image plus
+        # mapped hocr text
         generate_svg(
-            input_file=input_file,
+            input_file=str(input_file),
             input_hocr=output_hocr,
             options=options
+        )
+        # keep a copy of hocr file around
+        copy_hocr(
+            input_file_path=str(output_hocr),
+            output_dir=options.output_dir
+        )
+        # actual extracted text
+        copy_txt(
+            input_file_path=str(output_text),
+            output_dir=options.output_dir
         )
 
 
@@ -49,4 +66,10 @@ def add_options(parser):
         help="Format of generated output",
         choices=["html", "svg"],
         default="svg"
+    )
+    parser.add_argument(
+        '--preview-width',
+        help="Base width of preview image",
+        type=int,
+        default=400
     )

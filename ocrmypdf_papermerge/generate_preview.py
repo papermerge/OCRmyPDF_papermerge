@@ -9,7 +9,7 @@ def generate_preview(input_file, options):
     """
     output_file_path = get_result_file_path(
         input_file_path=str(input_file),
-        output_dir=options.output_dir,
+        output_dir=options.sidecar_dir,
         output_ext="jpg"
     )
 

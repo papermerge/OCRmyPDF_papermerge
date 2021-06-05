@@ -41,12 +41,12 @@ class CustomEngine(TesseractOcrEngine):
         # keep a copy of hocr file around
         copy_hocr(
             input_file_path=str(output_hocr),
-            output_dir=options.output_dir
+            output_dir=options.sidecar_dir
         )
         # actual extracted text
         copy_txt(
             input_file_path=str(output_text),
-            output_dir=options.output_dir
+            output_dir=options.sidecar_dir
         )
 
 
@@ -58,11 +58,11 @@ def get_ocr_engine():
 @hookimpl
 def add_options(parser):
     parser.add_argument(
-        '--output-dir',
+        '--sidecar-dir',
         help="Folder where to write generated files"
     )
     parser.add_argument(
-        '--output-format',
+        '--sidecar-format',
         help="Format of generated output",
         choices=["html", "svg"],
         default="svg"

@@ -10,15 +10,15 @@ def generate_svg(input_file, input_hocr, options):
     """
     output_file_path = get_result_file_path(
         input_file_path=str(input_file),
-        output_dir=options.output_dir,
-        output_ext=options.output_format
+        output_dir=options.sidecar_dir,
+        output_ext=options.sidecar_format
     )
 
     base64_img, size = image_to_base64(input_file)
 
     words = get_words(input_hocr)
 
-    output_format = options.output_format  # svg | html
+    output_format = options.sidecar_format  # svg | html
     template_name = f"page.{output_format}.j2"  # svg | html
 
     rendered_string = render_to_string(

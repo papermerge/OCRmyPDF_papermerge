@@ -1,0 +1,43 @@
+[tool.poetry]
+name = "ocrmypdf-papermerge"
+version = "0.4.1"
+description = "OCRmyPDF plugin to generate SVG files for Papermerge"
+authors = ["Eugen Ciur <eugen@papermerge.com>"]
+maintainers = ["Eugen Ciur <eugen@papermerge.com>"]
+license = "Apache-2.0"
+include = ["LICENSE", "changelog.md", "README.md", "ocrmypdf_papermerge/templates/*"]
+readme = "README.md"
+classifiers = [
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10"
+]
+homepage = "https://github.com/papermerge/OCRmyPDF_papermerge"
+repository = "https://github.com/papermerge/OCRmyPDF_papermerge"
+keywords = ["OCR", "PDF", "OCRmyPDF", "Document Management System"]
+
+
+[tool.poetry.dependencies]
+python = "~3.8"
+ocrmypdf = "^13.5.0"
+Jinja2 = "^3.1.2"
+lxml = "^4.9.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.1.2"
+pycodestyle = "^2.8.0"
+taskipy = "^1.10.2"
+
+[tool.taskipy.tasks]
+test = "python -m pytest"
+lint = "pycodestyle tests/ ocrmypdf_papermerge/"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

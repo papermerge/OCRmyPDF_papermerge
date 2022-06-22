@@ -6,3 +6,12 @@ This [OCRmyPDF](https://github.com/jbarlow83/OCRmyPDF) plugin is used by [Paperm
 2. generate PDF/TIFF preview images
 
 Learn more about OCRmyPDF plugin system [here](https://ocrmypdf.readthedocs.io/en/latest/plugins.html).
+
+
+## Run Tests
+
+    $ poetry run task test
+
+## Run Linting
+
+    $ poetry run task lint

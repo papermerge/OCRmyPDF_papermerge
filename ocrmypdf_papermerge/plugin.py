@@ -25,6 +25,7 @@ class CustomEngine(TesseractOcrEngine):
             pagesegmode=options.tesseract_pagesegmode,
             user_words=options.user_words,
             user_patterns=options.user_patterns,
+            thresholding=options.tesseract_thresholding
         )
         # jpeg thumbnail preview image
         generate_preview(

@@ -18,6 +18,6 @@ def generate_preview(input_file, options):
     width = options.preview_width
     wpercent = (width / float(im.size[0]))
     height = int((float(im.size[1]) * float(wpercent)))
-    im = im.resize((width, height), Image.ANTIALIAS)
+    im = im.resize((width, height), Image.Resampling.LANCZOS)
 
     im.save(output_file_path, quality=50, format='JPEG')

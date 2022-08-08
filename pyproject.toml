@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ocrmypdf-papermerge"
-version = "0.4.5"
+version = "0.4.6"
 description = "OCRmyPDF plugin to generate SVG files for Papermerge"
 authors = ["Eugen Ciur <eugen@papermerge.com>"]
 maintainers = ["Eugen Ciur <eugen@papermerge.com>"]
@@ -28,6 +28,7 @@ python = ">=3.8, <=3.10.6"
 ocrmypdf = "^13.5.0"
 Jinja2 = "^3.1.2"
 lxml = "^4.9.0"
+Pillow = "<9.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.1.2"

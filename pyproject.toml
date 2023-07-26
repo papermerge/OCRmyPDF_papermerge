@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ocrmypdf-papermerge"
-version = "0.4.6"
+version = "0.4.7"
 description = "OCRmyPDF plugin to generate SVG files for Papermerge"
 authors = ["Eugen Ciur <eugen@papermerge.com>"]
 maintainers = ["Eugen Ciur <eugen@papermerge.com>"]

@@ -24,8 +24,8 @@ keywords = ["OCR", "PDF", "OCRmyPDF", "Document Management System"]
 
 
 [tool.poetry.dependencies]
-python = ">=3.8, <3.11"
-ocrmypdf = "^13.5.0"
+python = ">=3.8, <3.12"
+ocrmypdf = "^14.3.0"
 Jinja2 = "^3.1.2"
 lxml = "^4.9.0"
 

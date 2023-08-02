@@ -30,7 +30,8 @@ class CustomEngine(TesseractOcrEngine):
         # jpeg thumbnail preview image
         generate_preview(
             input_file=str(input_file),
-            options=options
+            preview_width=options.preview_width,
+            sidecar_dir=options.sidecar_dir
         )
         # svg | html with embedded raster image plus
         # mapped hocr text

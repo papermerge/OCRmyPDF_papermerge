@@ -1,13 +1,10 @@
 from ocrmypdf import hookimpl
-from ocrmypdf.builtin_plugins.tesseract_ocr import TesseractOcrEngine
 from ocrmypdf._exec import tesseract
+from ocrmypdf.builtin_plugins.tesseract_ocr import TesseractOcrEngine
 
 from .generate_preview import generate_preview
 from .generate_svg import generate_svg
-from .utils import (
-    copy_hocr,
-    copy_txt
-)
+from .utils import copy_hocr, copy_txt
 
 
 class CustomEngine(TesseractOcrEngine):

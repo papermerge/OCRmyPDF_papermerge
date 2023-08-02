@@ -1,9 +1,6 @@
 import pytest
 
-from ocrmypdf_papermerge.utils import (
-    get_page_number,
-    get_result_file_path
-)
+from ocrmypdf_papermerge.utils import get_page_number, get_result_file_path
 
 
 def test_get_page_number_positive_input():

@@ -1,6 +1,8 @@
-import pytest
 import os
 from pathlib import Path
+
+import pytest
+
 from ocrmypdf_papermerge.generate_preview import generate_preview
 
 TEST_DATA_FOLDER = Path(os.path.dirname(__file__)) / 'data'
@@ -61,7 +63,3 @@ def test_generate_preview_will_raise_exception_on_invalid_file_name(tmp_path: Pa
             preview_width=100,
             sidecar_dir=sidecar_dir
         )
-
-
-
-

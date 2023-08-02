@@ -1,6 +1,7 @@
 import base64
-from PIL import Image
 from io import BytesIO
+
+from PIL import Image
 
 
 def image_to_base64(image_path):

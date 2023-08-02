@@ -19,6 +19,7 @@ def get_page_number(input_file_path):
         raise ValueError("Expecting a string at least 6 characters long")
 
     PATTERN = r"(?P<page_num>\d{6})"
+
     match = re.search(PATTERN, input_file_path)
     if match:
         return match.group('page_num')

@@ -1,13 +1,10 @@
 from ocrmypdf import hookimpl
-from ocrmypdf.builtin_plugins.tesseract_ocr import TesseractOcrEngine
 from ocrmypdf._exec import tesseract
+from ocrmypdf.builtin_plugins.tesseract_ocr import TesseractOcrEngine
 
 from .generate_preview import generate_preview
 from .generate_svg import generate_svg
-from .utils import (
-    copy_hocr,
-    copy_txt
-)
+from .utils import copy_hocr, copy_txt
 
 
 class CustomEngine(TesseractOcrEngine):
@@ -30,7 +27,8 @@ class CustomEngine(TesseractOcrEngine):
         # jpeg thumbnail preview image
         generate_preview(
             input_file=str(input_file),
-            options=options
+            preview_width=options.preview_width,
+            sidecar_dir=options.sidecar_dir
         )
         # svg | html with embedded raster image plus
         # mapped hocr text

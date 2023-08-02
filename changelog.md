@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.4.9] - 2023-08-02
+
+- Fix Image.ANTIALIAS deprication issue
+
+
 ## [0.4.4] - 2022-06-22
 
 ### Changed

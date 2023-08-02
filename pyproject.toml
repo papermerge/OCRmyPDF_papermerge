@@ -34,6 +34,9 @@ pytest = "^7.1.2"
 pycodestyle = "^2.8.0"
 taskipy = "^1.10.2"
 
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.3.3"
+
 [tool.taskipy.tasks]
 test = "python -m pytest"
 lint = "pycodestyle tests/ ocrmypdf_papermerge/"

@@ -1,0 +1,21 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v2.3.0
+  hooks:
+    - id: check-yaml
+    - id: flake8
+      args:
+        - "--max-line-length=80"
+    - id: trailing-whitespace
+    - id: end-of-file-fixer
+- repo: https://github.com/PyCQA/autoflake
+  rev: v2.1.1
+  hooks:
+    - id: autoflake
+      args:
+        - "--remove-all-unused-imports"
+        - "--in-place"
+- repo: https://github.com/pycqa/isort
+  rev: 5.12.0
+  hooks:
+    - id: isort

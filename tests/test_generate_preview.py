@@ -35,7 +35,7 @@ def test_generate_preview(
     assert expected_path.exists()
 
 
-def test_generate_preview_will_raise_exception_on_invalid_file_name(tmp_path: Path):
+def test_generate_preview_will_raise_exp_on_invalid_file_name(tmp_path: Path):
     """input file basename should contain 6 character page number
 
     Correct image basenames:

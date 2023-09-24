@@ -20,7 +20,7 @@ def get_page_number(input_file_path: Path) -> int:
     if len(str(input_file_path)) < 6:
         raise ValueError("Expecting path to be at least 6 chars long")
 
-    PATTERN = r"\/(?P<page_num>\d{6})_"
+    PATTERN = r"\/(?P<page_num>\d{6})"
 
     match = re.search(PATTERN, str(input_file_path))
     if match:
@@ -29,7 +29,7 @@ def get_page_number(input_file_path: Path) -> int:
 
     # always should match, otherwise there is something wrong
     # with input. Maybe OCRmyPDF output format changed?
-    raise ValueError("get_page_number did not match")
+    raise ValueError(f"Input {input_file_path} did not match expected pattern.")
 
 
 def get_result_file_path(

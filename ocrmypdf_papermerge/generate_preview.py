@@ -15,7 +15,7 @@ def generate_preview(
     """
     output_file_path = get_result_file_path(
         input_file_path=str(input_file),
-        output_dir=str(sidecar_dir),
+        base_dir=str(sidecar_dir),
         output_ext="jpg"
     )
 

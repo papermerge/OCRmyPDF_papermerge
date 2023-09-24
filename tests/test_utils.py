@@ -61,7 +61,7 @@ def test_get_result_file_path_positive_input():
         base_dir=Path("/media/"),
         uuids=[
             '8db234f4-9579-4dd8-86c9-2564d45de1ce',
-            'ed06dc8c-6675-47d4-ad41-1edb8c43030c'
+            'ed06dc8c-6675-47d4-ad41-1edb8c43030c'  # UUID for the second page
         ],
         output_ext="txt",
         makedirs=False

@@ -34,6 +34,7 @@ def get_page_number(input_file_path: Path) -> int:
 
 def get_result_file_path(
     input_file_path: Path,
+    *,
     base_dir: Path,
     uuids: List[str],
     output_ext,
@@ -88,24 +89,28 @@ def get_result_file_path(
 
 
 def copy_txt(
-    input_file_path,
-    output_dir
+    input_file_path: Path,
+    output_dir: Path,
+    uuids: List[str]
 ):
     output_file_path = get_result_file_path(
-        input_file_path=input_file_path,
-        output_dir=output_dir,
-        output_ext="txt"
+        input_file_path,
+        base_dir=output_dir,
+        output_ext="txt",
+        uuids=uuids
     )
     shutil.copy(input_file_path, output_file_path)
 
 
 def copy_hocr(
-    input_file_path,
-    output_dir
+    input_file_path: Path,
+    output_dir: Path,
+    uuids: List[str]
 ):
     output_file_path = get_result_file_path(
-        input_file_path=input_file_path,
-        output_dir=output_dir,
-        output_ext="hocr"
+        input_file_path,
+        base_dir=output_dir,
+        output_ext="hocr",
+        uuids=uuids
     )
     shutil.copy(input_file_path, output_file_path)

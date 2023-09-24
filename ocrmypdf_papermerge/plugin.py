@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from ocrmypdf import hookimpl
 from ocrmypdf._exec import tesseract
 from ocrmypdf.builtin_plugins.tesseract_ocr import TesseractOcrEngine
@@ -26,20 +28,21 @@ class CustomEngine(TesseractOcrEngine):
         )
         # jpeg thumbnail preview image
         generate_preview(
-            input_file=str(input_file),
+            input_file=Path(input_file),
             preview_width=options.preview_width,
-            sidecar_dir=options.sidecar_dir
+            base_dir=options.sidecar_dir,
+            uuids=options.uuids
         )
         # svg | html with embedded raster image plus
         # mapped hocr text
         generate_svg(
-            input_file=str(input_file),
+            Path(input_file),
             input_hocr=output_hocr,
             options=options
         )
         # keep a copy of hocr file around
         copy_hocr(
-            input_file_path=str(output_hocr),
+            input_file_path=Path(output_hocr),
             output_dir=options.sidecar_dir,
         )
         # actual extracted text
@@ -73,10 +76,10 @@ def add_options(parser):
         default=400
     )
     parser.add_argument(
-        '--page-map',
-        help="sequence of [number, uuid, number, uuid, number, ...] format"
-        " which describes to what uuid page number corresponds."
-        " Should be an event number. Every page number is followed by uuid of"
-        " respective page",
+        '--uuids',
+        help="sequence of uuids."
+        " Order of UUIDs matters. First UUID corresponds to first page ID, "
+        " second UUID corresponds to second page ID etc "
+        "Number of UUIDs should match number of pages in the document.",
         nargs='+',
     )

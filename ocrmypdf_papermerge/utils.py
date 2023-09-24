@@ -3,26 +3,27 @@ import re
 import shutil
 
 
-def get_page_number(input_file_path):
+def get_page_number(input_file_path: str) -> int:
     """
-    Given input_file_path it returns page number as string.
+    Given input_file_path it returns page number as integer.
 
     e.g.:
 
-    "/tmp/media/000001_ocr.jpeg" => "000001"
-    "/tmp/media/000022_ocr.txt" => "000022"
+    "/tmp/media/000001_ocr.jpeg" => 1
+    "/tmp/media/000022_ocr.txt" => 22
     """
     if not isinstance(input_file_path, str):
         raise ValueError("Expecting a string as input")
 
-    if len(input_file_path) < 6:  # page number has 6 digits
-        raise ValueError("Expecting a string at least 6 characters long")
+    if len(input_file_path) < 6:  # input must be at least 6 characters long
+        raise ValueError("Expecting an input at least 6 chars long")
 
-    PATTERN = r"(?P<page_num>\d{6})"
+    PATTERN = r"\/(?P<page_num>\d{6})_"
 
     match = re.search(PATTERN, input_file_path)
     if match:
-        return match.group('page_num')
+        result = match.group('page_num')
+        return int(result.lstrip("0"))
 
     # always should match, otherwise there is something wrong
     # with input. Maybe OCRmyPDF output format changed?

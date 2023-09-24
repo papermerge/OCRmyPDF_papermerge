@@ -3,22 +3,22 @@ import pytest
 from ocrmypdf_papermerge.utils import get_page_number, get_result_file_path
 
 
-def test_get_page_number_positive_input():
+@pytest.mark.parametrize(
+    'input_path,output_number',
+    [
+        ("/tmp/media/000001_ocr.jpeg", 1),
+        ("/tmp/media/000023_ocr.jpeg", 23),
+        ("/tmp/000003_ocr.png", 3),
+        ("/tmp/000005_ocr_hocr.hocr", 5),
+        ("/tmp/000005_ocr_hocr.txt", 5),
+        ("/tmp/asd.45.tmp/000005_ocr_hocr.txt", 5),
+        ("/tmp/asd.000123.tmp/000005_ocr_hocr.txt", 5),
+    ]
+)
+def test_get_page_number_positive_input(input_path, output_number):
 
-    page_num_str = get_page_number("/tmp/media/000001_ocr.jpeg")
-    assert page_num_str == "000001"
-
-    page_num_str = get_page_number("/tmp/000023_ocr.jpeg")
-    assert page_num_str == "000023"
-
-    page_num_str = get_page_number("/tmp/000003_ocr.png")
-    assert page_num_str == "000003"
-
-    page_num_str = get_page_number("/tmp/000005_ocr_hocr.hocr")
-    assert page_num_str == "000005"
-
-    page_num_str = get_page_number("/tmp/000005_ocr_hocr.txt")
-    assert page_num_str == "000005"
+    page_num_str = get_page_number(input_path)
+    assert page_num_str == output_number
 
 
 def test_get_page_number_negative_input():

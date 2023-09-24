@@ -40,12 +40,12 @@ class CustomEngine(TesseractOcrEngine):
         # keep a copy of hocr file around
         copy_hocr(
             input_file_path=str(output_hocr),
-            output_dir=options.sidecar_dir
+            output_dir=options.sidecar_dir,
         )
         # actual extracted text
         copy_txt(
             input_file_path=str(output_text),
-            output_dir=options.sidecar_dir
+            output_dir=options.sidecar_dir,
         )
 
 
@@ -71,4 +71,12 @@ def add_options(parser):
         help="Base width of preview image",
         type=int,
         default=400
+    )
+    parser.add_argument(
+        '--page-map',
+        help="sequence of [number, uuid, number, uuid, number, ...] format"
+        " which describes to what uuid page number corresponds."
+        " Should be an event number. Every page number is followed by uuid of"
+        " respective page",
+        nargs='+',
     )

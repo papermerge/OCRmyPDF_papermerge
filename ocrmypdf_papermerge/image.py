@@ -1,10 +1,11 @@
 import base64
 from io import BytesIO
+from pathlib import Path
 
 from PIL import Image
 
 
-def image_to_base64(image_path):
+def image_to_base64(image_path: Path) -> [str, [int, int]]:
     """
     Converts image to base64 encoded string.
 
@@ -16,7 +17,7 @@ def image_to_base64(image_path):
             a. width (int)
             b. height (int)
     """
-    im = Image.open(image_path)
+    im = Image.open(str(image_path))
     rgb_im = im.convert('RGB')
     output_buffer = BytesIO()
     # f"{options.svg_output_folder}/{root}.jpg"

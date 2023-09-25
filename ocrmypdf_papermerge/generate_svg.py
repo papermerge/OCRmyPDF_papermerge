@@ -18,7 +18,7 @@ def generate_svg(
         input_file,
         base_dir=Path(options.sidecar_dir),
         output_ext=options.sidecar_format,
-        uuids=options.uuids
+        uuids=options.uuids.split(',')
     )
 
     base64_img, size = image_to_base64(input_file)

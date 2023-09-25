@@ -31,7 +31,7 @@ class CustomEngine(TesseractOcrEngine):
             input_file=Path(input_file),
             preview_width=options.preview_width,
             base_dir=options.sidecar_dir,
-            uuids=options.uuids
+            uuids=options.uuids.split(',')
         )
         # svg | html with embedded raster image plus
         # mapped hocr text
@@ -44,11 +44,13 @@ class CustomEngine(TesseractOcrEngine):
         copy_hocr(
             input_file_path=Path(output_hocr),
             output_dir=options.sidecar_dir,
+            uuids=options.uuids.split(',')
         )
         # actual extracted text
         copy_txt(
-            input_file_path=str(output_text),
+            input_file_path=Path(output_text),
             output_dir=options.sidecar_dir,
+            uuids=options.uuids.split(',')
         )
 
 
@@ -76,10 +78,10 @@ def add_options(parser):
         default=400
     )
     parser.add_argument(
+        '-u',
         '--uuids',
-        help="sequence of uuids."
+        help="A list of uuids separated by comma. "
         " Order of UUIDs matters. First UUID corresponds to first page ID, "
         " second UUID corresponds to second page ID etc "
         "Number of UUIDs should match number of pages in the document.",
-        nargs='+',
     )

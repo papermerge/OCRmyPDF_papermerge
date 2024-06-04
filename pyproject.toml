@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ocrmypdf-papermerge"
-version = "0.5.0"
+version = "0.6.0"
 description = "OCRmyPDF plugin to generate SVG files for Papermerge"
 authors = ["Eugen Ciur <eugen@papermerge.com>"]
 maintainers = ["Eugen Ciur <eugen@papermerge.com>"]
@@ -16,7 +16,8 @@ classifiers = [
     "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10"
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11"
 ]
 homepage = "https://github.com/papermerge/OCRmyPDF_papermerge"
 repository = "https://github.com/papermerge/OCRmyPDF_papermerge"
@@ -24,8 +25,8 @@ keywords = ["OCR", "PDF", "OCRmyPDF", "Document Management System"]
 
 
 [tool.poetry.dependencies]
-python = ">=3.8, <4.0"
-ocrmypdf = "^14.3.0"
+python = ">=3.11, <4.0"
+ocrmypdf = "^16.3.1"
 Jinja2 = "^3.1.2"
 lxml = "^4.9.0"
 

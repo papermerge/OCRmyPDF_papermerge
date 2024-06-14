@@ -1,5 +1,4 @@
 from pathlib import Path
-from typing import List
 
 from PIL import Image
 
@@ -11,7 +10,7 @@ def generate_preview(
     *,
     preview_width: int,
     base_dir: Path,
-    uuids: List[str]
+    uuid: str
 ) -> None:
     """
     Generates page preview as jpeg
@@ -19,7 +18,7 @@ def generate_preview(
     output_file_path = get_result_file_path(
         input_file_path=input_file,
         base_dir=base_dir,
-        uuids=uuids,
+        uuid=uuid,
         output_ext="jpg"
     )
     output_file_path.parent.mkdir(parents=True, exist_ok=True)

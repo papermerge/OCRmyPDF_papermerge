@@ -2,7 +2,6 @@ import os
 import re
 import shutil
 from pathlib import Path
-from typing import List
 
 
 def get_page_number(input_file_path: Path) -> int:
@@ -36,7 +35,7 @@ def get_result_file_path(
     input_file_path: Path,
     *,
     base_dir: Path,
-    uuids: List[str],
+    uuid: str,
     output_ext,
     makedirs=True
 ) -> Path:
@@ -46,7 +45,7 @@ def get_result_file_path(
     input:
         input_file_path: Path('/tmp/media/000001_ocr.png')
         base_dir: Path('/ocr/')
-        uuids: ['8db234f4-9579-4dd8-86c9-2564d45de1ce']
+        uuid: '8db234f4-9579-4dd8-86c9-2564d45de1ce'
         output_ext: 'jpeg'
 
     output:
@@ -57,20 +56,12 @@ def get_result_file_path(
     input:
         input_file_path: Path('/tmp/000023_ocr.png')
         base_dir: Path('/ocr')
-        uuids: [...22 more uuids...,'a5b93d53-d62b-4264-a368-8122a8c313bc']
+        uuid: 'a5b93d53-d62b-4264-a368-8122a8c313bc'
         output_ext: 'txt'
 
     output:
         Path('/ocr/a5/b9/a5b93d53-d62b-4264-a368-8122a8c313bc/page.txt')
     """
-    page_number = get_page_number(input_file_path)
-
-    if page_number > len(uuids):
-        raise ValueError(
-            f"page_number > len(uuids) i.e. {page_number} > {len(uuids)}"
-        )
-
-    uuid = uuids[page_number - 1]
     basename = os.path.basename(input_file_path)
     root, _ = os.path.splitext(basename)
 
@@ -91,13 +82,13 @@ def get_result_file_path(
 def copy_txt(
     input_file_path: Path,
     output_dir: Path,
-    uuids: List[str]
+    uuid: str
 ):
     output_file_path = get_result_file_path(
         input_file_path,
         base_dir=output_dir,
         output_ext="txt",
-        uuids=uuids
+        uuid=uuid
     )
     shutil.copy(input_file_path, output_file_path)
 
@@ -105,12 +96,12 @@ def copy_txt(
 def copy_hocr(
     input_file_path: Path,
     output_dir: Path,
-    uuids: List[str]
+    uuid: str
 ):
     output_file_path = get_result_file_path(
         input_file_path,
         base_dir=output_dir,
         output_ext="hocr",
-        uuids=uuids
+        uuid=uuid
     )
     shutil.copy(input_file_path, output_file_path)

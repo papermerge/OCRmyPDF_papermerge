@@ -47,7 +47,7 @@ def test_get_result_file_path_positive_input():
     output_file_path = get_result_file_path(
         input_file_path=Path("/tmp/media/000001_ocr.png"),
         base_dir=Path("/ocr/"),
-        uuids=['8db234f4-9579-4dd8-86c9-2564d45de1ce'],
+        uuid='8db234f4-9579-4dd8-86c9-2564d45de1ce',
         output_ext="jpeg",
         makedirs=False
     )
@@ -59,10 +59,7 @@ def test_get_result_file_path_positive_input():
     output_file_path = get_result_file_path(
         input_file_path=Path("/tmp/000002_ocr.png"),
         base_dir=Path("/media/"),
-        uuids=[
-            '8db234f4-9579-4dd8-86c9-2564d45de1ce',
-            'ed06dc8c-6675-47d4-ad41-1edb8c43030c'  # UUID for the second page
-        ],
+        uuid='ed06dc8c-6675-47d4-ad41-1edb8c43030c',  # UUID for target page
         output_ext="txt",
         makedirs=False
     )

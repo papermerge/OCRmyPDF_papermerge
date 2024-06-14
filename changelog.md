@@ -1,5 +1,10 @@
 # Changelog
 
+
+## [0.7.0] - 2024-06-14
+
+- OCR per page (pass one `uuid` instead of `uuids` list)
+
 ## [0.4.9] - 2023-08-02
 
 - Fix Image.ANTIALIAS deprication issue

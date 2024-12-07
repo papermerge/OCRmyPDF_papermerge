@@ -1,6 +1,11 @@
 # Changelog
 
 
+## [0.7.1] - 2024-12-07
+
+- Dependencies updates. Use Python 3.13.
+
+
 ## [0.7.0] - 2024-06-14
 
 - OCR per page (pass one `uuid` instead of `uuids` list)
